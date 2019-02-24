@@ -19,27 +19,24 @@ const shop =[
 console.log('shop', shop);
 
 // Testing output
-console.log(shop[0].items.tools[1]);
-console.log(shop[0]);
+// console.log(shop[0].items.tools[1]);
+// console.log(shop[0]);
 $('#contentType').append(`<li>${shop[0].items.clothing[0]}</li>`);
-$('#contentType').append(`<li>${shop[0].items[1]}</li>`);
-// $('#groceries').append(`<p>${tasks.grocery.produce[0]}</p>`);
-
-// const render = function() {
-  
-    // Adding list Shopping types
-    // for( let i = 0; i < shop[0].items.length; i++ ) {
-    //   $('.contentType').append(`<br>                               
-    //                             <li>${shop[0].items[i]} </li>
-    //                             `);
-
-            // console.log(shop[0].items[i])
-    // } //End of loop
-    // render();
-    // console.log(`render()`); 
-// };    //End of render
 
 
+// Show the list of Clothing
+for( let i = 0; i < shop[0].items.clothing.length; i++ ) {
+    $('#contentType2').append(`<li>${shop[0].items.clothing[i]} </li>`);
+    console.log(shop[0].items.clothing[i]);
+
+  } 
+
+  // Show the list of Electronics
+for( let i = 0; i < shop[0].items.electronics.length; i++ ) {
+    $('#contentType2').append(`<li>${shop[0].items.electronics[i]} </li>`);
+    console.log(shop[0].items.clothing[i]);
+
+  } 
 
 //End of document
 // });
