@@ -1,13 +1,22 @@
 .top{
     background: #5A5A5A;
+    font: bold;   
 
-};
+}
 
 .side{
     background: #A0D468;
+    height: 2000px;
+    margin: 0;
+    padding: 0;
 
-};
+}
 
 .blue{
     background: #4B89DC;
-};
+}
+
+.list-group{
+    text-align: center;
+
+}
