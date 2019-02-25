@@ -24,12 +24,8 @@ console.log('shop', shop);
 $('#contentType').append(`<li>${shop[0].items.clothing[0]}</li>`);
 
 
-// Show the list of Clothing
-for( let i = 0; i < shop[0].items.clothing.length; i++ ) {
-    $('#contentType2').append(`<li>${shop[0].items.clothing[i]} </li>`);
-    console.log(shop[0].items.clothing[i]);
 
-  } 
+
 
   // Show the list of Electronics
 for( let i = 0; i < shop[0].items.electronics.length; i++ ) {
@@ -37,6 +33,20 @@ for( let i = 0; i < shop[0].items.electronics.length; i++ ) {
     console.log(shop[0].items.clothing[i]);
 
   } 
+
+  $( "#clothDown" ).mouseover(function() {
+    // $( "#log" ).append( "<div>Handler for .mouseover() called.</div>" );
+    console.log("Clothing Mouse Over");
+    // Show the list of Clothing
+    for( let i = 0; i < shop[0].items.clothing.length; i++ ) {
+        $('#contentType2').append(`<li>${shop[0].items.clothing[i]} </li>`);
+        // console.log(shop[0].items.clothing[i]);
+
+    } 
+
+  });
+
+//   $('.dropdown-toggle').dropdown();
 
 //End of document
 // });
