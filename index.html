@@ -85,13 +85,14 @@
           </div>
 
           <div class="col-10 ">
-              <div id="list"></div>
+              <br>
+              <!-- <div id="list"></div> -->
               <table class="table table-sm table-hover">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
+                      <th scope="col" id="az">Category</th>
                       <th scope="col">Item</th>
-                      <!-- <th scope="col">Image</th> -->
                       <th scope="col">Cost</th>                      
                       <th scope="col"></th>
 
@@ -101,25 +102,30 @@
                   <tbody>
                     <tr>
                       <th scope="row">1</th>
-                      <td>Mark</td>
-                      <!-- <td>Otto</td> -->
+                      <!-- Using this to pull in the category name so that it can be selected for sorting a to z -->
+                      <td id="cata">Mark</td>
+                      <!-- Using this to pull in the items selected on the list-->
+                      <td id="list">Otto</td>
                       <td>$200.00</td>
                       <td class="fas fa-minus-circle"></td>
                     </tr>
                     <tr>
                       <th scope="row">2</th>
                       <td>Jacob</td>
-                      <!-- <td>Thornton</td> -->
+                      <td>Thornton</td>
                       <td>$3.00</td>
                       <td class="fas fa-minus-circle"></td>
                     </tr>
-                    <tr class="blue text-white">
-                        <th scope="row">Total</th>
-                        <td></td>
-                        <!-- <td>Thornton</td> -->
-                        <td>$203.00</td>
-                        <!-- <td class="fas fa-minus-circle"></td> -->
-                      </tr>
+
+                  </tbody>
+                  <tbody>
+                  <tr class="blue text-white">
+                      <th scope="row">Total</th>
+                      <td></td>
+                      <td></td>
+                      <td>$203.00</td>
+                      <td></td>
+                    </tr>
                   </tbody>
                 </table>       
           </div>

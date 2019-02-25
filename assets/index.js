@@ -15,14 +15,24 @@ const shop =[
   }
 ];    //End of shopping list
 
+//Check structure of the list
+console.log('shop', shop);
+
 // Clear function
 const clearContent = function(){
     $('.contentType').empty('');
     $('.contentType2').empty('');
   };
 
-//Check structure of the list
-console.log('shop', shop);
+// When selecting the button to clear the list that is shown
+// const emptyList = function(){
+//     clearContent();
+//   };
+
+
+
+// $('.btn-secondary').on('click', emptyList);
+
 
 // Testing output
 // console.log(shop[0].items.tools[1]);
@@ -31,34 +41,38 @@ $('#contentType').append(`<li>${shop[0].items.tools[0]}</li>`);
 
 // *****Testing to pull over the variable****
 
+// Bring over the selected item
+
 const verifyInfo= function() {
     clearContent();
-    // $('.content').show();
-    const nameVal = $('#name').val();
+
+    const nameVal = $('#option').val();
   
     console.log(nameVal);
   
     let result = "Not found";
-    for (i=0; i < employeeList.length; i++) {
+    for (i=0; i < shop[0].items.tools[i].length; i++) {
       // Taking into account the case sensetive
 
-      if (shop[0].items.tools[i] === nameVal || employeeList[i].name.toLowerCase() === nameVal.toLowerCase()) {
-        result = "found"
+      if (shop[0].items.tools[i] === nameVal) {
+        result = "Tools"
+        // category = "tools"
       }
   
       
     }
     
-    $('.content').append(`<p> ${nameVal} has been ${result} in the employee records </p>`);
-    $('.content').show();
+    $('#cat').append(`<p> ${result} </p>`);
+    $('#list').append(`<p> ${nameVal} </p>`);
+    // $('.content').show();
 
     result ='';
-    $('#name').val(''); 
+    // $('#name').val(''); 
     
   }
   
   
-  $('#search').on('click', verifyInfo);
+  $('#option').on('click', verifyInfo);
 //   *****End Testing****
 
 
@@ -117,7 +131,7 @@ const checkSelect = function (){
         text = "No value found new";
         $('#contentType2').append(`<li>Not Working</li>`);
         }
-
+ //Use toggle method.. -> https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_eff_toggle
     // console.log(type);
     // // Show the list of Clothing
     // for( let i = 0; i < shop[0].items.type.length; i++ ) {
@@ -133,6 +147,11 @@ const checkSelect = function (){
 // console.log(pick);
 // $('.select').on('click', checkSelect); 
 // $('.select').mouseover(checkSelect); 
+
+
+// Remove the items from the list using the removal icon
+// const removal = function() 
+// $(.fa-minus-circle)
 
 
 
