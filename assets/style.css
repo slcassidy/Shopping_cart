@@ -14,9 +14,21 @@
 
 .blue{
     background: #4B89DC;
+    /* font: bold; */
+    /* font: white; */
+    font-weight: bold;
 }
 
 .list-group{
     text-align: center;
 
+}
+
+.txt{
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font: white;
+}
+
+.fa-minus-circle{
+    color: red;
 }
