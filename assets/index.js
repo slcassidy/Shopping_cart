@@ -22,6 +22,7 @@ console.log('shop', shop);
 const clearContent = function(){
     $('.contentType').empty('');
     $('.contentType2').empty('');
+    $('#category').empty(``);
   };
 
 // When selecting the button to clear the list that is shown
@@ -37,67 +38,101 @@ const clearContent = function(){
 // Testing output
 // console.log(shop[0].items.tools[1]);
 // console.log(shop[0]);
-$('#contentType').append(`<li>${shop[0].items.tools[0]}</li>`);
+// $('#contentType').append(`<li>${shop[0].items.tools[0]}</li>`);
 
 // *****Testing to pull over the variable****
 
 // Bring over the selected item
 
-const verifyInfo= function() {
-    clearContent();
+// const verifyInfo= function() {
+//     clearContent();
 
-    const nameVal = $('#option').val();
+//     const nameVal = $('#option').val();
   
-    console.log(nameVal);
+//     console.log(nameVal);
   
-    let result = "Not found";
-    for (i=0; i < shop[0].items.tools[i].length; i++) {
-      // Taking into account the case sensetive
+//     let result = "Not found";
+//     for (i=0; i < shop[0].items.tools[i].length; i++) {
+//       // Taking into account the case sensetive
 
-      if (shop[0].items.tools[i] === nameVal) {
-        result = "Tools"
-        // category = "tools"
-      }
+//       if (shop[0].items.tools[i] === nameVal) {
+//         result = "Tools"
+//         // category = "tools"
+//       }
   
       
-    }
+//     }
     
-    $('#cat').append(`<p> ${result} </p>`);
-    $('#list').append(`<p> ${nameVal} </p>`);
-    // $('.content').show();
+//     $('#cat').append(`<p> ${result} </p>`);
+//     $('#list').append(`<p> ${nameVal} </p>`);
+//     // $('.content').show();
 
-    result ='';
-    // $('#name').val(''); 
+//     result ='';
+//     // $('#name').val(''); 
     
-  }
+//   }
   
   
-  $('#option').on('click', verifyInfo);
+//   $('#option').on('click', verifyInfo);
 //   *****End Testing****
 
 
 
-// Show the list of Electronics
-for( let i = 0; i < shop[0].items.electronics.length; i++ ) {
-    $('#contentType2').append(`<li>${shop[0].items.electronics[i]} </li>`);
-    console.log(shop[0].items.clothing[i]);
 
-  } 
 
 //   Selecting Clothing directly
 
-  $( "#clothDown" ).mouseover(function() {
-      clearContent();
-    // $( "#log" ).append( "<div>Handler for .mouseover() called.</div>" );
-    console.log("Clothing Mouse Over");
-    // Show the list of Clothing
-    for( let i = 0; i < shop[0].items.clothing.length; i++ ) {
-        $('#contentType2').append(`<li>${shop[0].items.clothing[i]} </li>`);
-        // console.log(shop[0].items.clothing[i]);
+//   $( "#clothDown" ).on("click",function() {
+//       clearContent();
+//     // $( "#log" ).append( "<div>Handler for .mouseover() called.</div>" );
+//     // console.log("Clothing Mouse Over");
+//     $('#category').append(`<h3>Clothing</h3>`);
+//     // Show the list of Clothing
+//     for( let i = 0; i < shop[0].items.clothing.length; i++ ) {
+//         $('#contentType2').append(`<li>${shop[0].items.clothing[i]} </li>`);
+//         // console.log(shop[0].items.clothing[i]);
 
-     } 
+//      } 
 
-  }); //End Mouseover
+//   }); //End Click on
+
+//    Show the list of Electronics
+
+//   $( "#electronicsDown" ).on("click",function() {
+//         clearContent();
+//     $('#category').append(`<h3>Electronics</h3>`);
+//         for( let i = 0; i < shop[0].items.electronics.length; i++ ) {
+//             $('#contentType2').append(`<li>${shop[0].items.electronics[i]} </li>`);
+//             console.log(shop[0].items.electronics[i]);
+
+//         } //End of the for loop for electronics
+
+  
+// }); //End Click on
+
+// Testing Calling a function
+
+const selected = function(y,x) {
+    clearContent();
+    // const header = $(this).html();
+    console.log(y);
+    console.log(x);
+    const type = 'shop[0].items.' + x;
+    console.log(`Type: ${type}`);
+    // const check = 'shop[0].items.' + x ;
+    // console.log(`check: ${check}`);
+
+    $('#category').append(`<h3>${y}</h3>`);
+    for( let i = 0; i < shop[0].items.toys.length; i++ ) {
+        console.log(`Type2: ${type}`);
+        console.log(`Type2: ${x}`);
+        // $('#contentType2').append(`<li>${shop[0].items.x[i]}</li>`);
+        $('#contentType2').append(`<li>${shop[0].items.toys[i]}</li>`);
+        // console.log(shop[0].items.x[i]);
+
+    } //End of the for loop for selected function
+
+}; //End Click on
 
 
   
@@ -106,47 +141,142 @@ for( let i = 0; i < shop[0].items.electronics.length; i++ ) {
 
 // Case selection of the of the drop down
 
-const checkSelect = function (){
+    $("a").each(function(i){
+        $(this).on("click", {x:i}, function(event){
+        //   alert("The " + $(this).index() + ". paragraph has data: " + event.data.x);
+        //   const selected = event.data.value
+        //   console.log(`This is the selected item: ${this} each ${selected}`);
 
-    x = $('.select').attr("id");
+        //   Case choosing what is selected
+        const selection = $(this).index();
+        
+     
+        const idName = $(this).attr("id");
+        const aName = $(this).html();
 
-    console.log(x);
-    switch (x) {
-    case "toysDown":
-        text = "toysDown";
-        $('#contentType2').append(`<li>Toys Selected</li>`);
-        type = toys;
-        break;
-    case "clothDown":
-        text = "#clothDown";
-        $('#contentType2').append(`<li>Clothing Selected</li>`);
-        type = `clothing`;
-        break;
-    case "electronicsDown":
-        text = "#electronicsDown";
-        $('#contentType2').append(`<li>Electronics Selected</li>`);
-        type = electronics;   
-        break;
-    default:
-        text = "No value found new";
-        $('#contentType2').append(`<li>Not Working</li>`);
-        }
- //Use toggle method.. -> https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_eff_toggle
-    // console.log(type);
-    // // Show the list of Clothing
-    // for( let i = 0; i < shop[0].items.type.length; i++ ) {
-    //     $('#contentType2').append(`<li>${shop[0].items.type[i]} </li>`);
-    //     // console.log(shop[0].items.clothing[i]);
+        const attribute = '#' + $(this).attr("id")
 
-    //  } 
+        console.log(attribute);
 
-}; //End of checkSelect
+        selected(aName, idName);
+        
+        console.log(idName);
+        // console.log(aName);
 
-// const pick = '#' && $('.select').mouseover().attr("id");
 
-// console.log(pick);
-// $('.select').on('click', checkSelect); 
-// $('.select').mouseover(checkSelect); 
+
+        // const type = '';
+
+    //     switch (selection) {
+    // case 0:
+    //     text = "toysDown";
+    //     $('#contentType2').append(`<li>Clothing Selected</li>`);
+    //     console.log(`Clothing Selected`);
+    //     // type = "clothing";        
+    //     break;
+    // case 1:
+    //     text = "#clothDown";
+    //     $('#contentType2').append(`<li>Movies Selected</li>`);
+    //     // type = "movies";
+    //     console.log(`Movies Selected`);
+    //     break;
+    // case 2:
+    //     text = "#toolsDown";
+    //     $('#contentType2').append(`<li>Tools Selected</li>`);
+    //     // type = "tools";  
+    //     console.log(text);   
+    //     break;
+    // case 3:
+    //     text = "#electronicsDown";
+    //     $('#contentType2').append(`<li>Electronics Selected</li>`);
+    //     // type = "electronics"; 
+    //     console.log(text);  
+    //     break;
+    // case 4:
+    //     text = "#toysDown";
+    //     $('#contentType2').append(`<li>Electronics Selected</li>`);
+    //     // type = "toys";  
+    //     console.log(text);   
+    //     break;
+        
+    // default:
+    //     text = "No value found new";
+    //     console.log(`Not Working!!!`);
+    //     }  //End of Case
+    //     // console.log(type);
+
+        }); //End of Click
+        
+
+      }); //End of Each
+
+// Case statement process:
+// $("a").each(function(i){
+//     $(this).on("click", {x:i}, function(event){
+//     //   alert("The " + $(this).index() + ". paragraph has data: " + event.data.x);
+//     //   const selected = event.data.value
+//     //   console.log(`This is the selected item: ${this} each ${selected}`);
+
+//     //   Case choosing what is selected
+//     const selection = $(this).index();
+ 
+    
+//     const attribute = $(this).attr("id")
+//     console.log(attribute);
+
+//     const type = '';
+
+//     switch (selection) {
+// case 0:
+//     text = "toysDown";
+//     $('#contentType2').append(`<li>Clothing Selected</li>`);
+//     console.log(`Clothing Selected`);
+//     // type = "clothing";        
+//     break;
+// case 1:
+//     text = "#clothDown";
+//     $('#contentType2').append(`<li>Movies Selected</li>`);
+//     // type = "movies";
+//     console.log(`Movies Selected`);
+//     break;
+// case 2:
+//     text = "#toolsDown";
+//     $('#contentType2').append(`<li>Tools Selected</li>`);
+//     // type = "tools";  
+//     console.log(text);   
+//     break;
+// case 3:
+//     text = "#electronicsDown";
+//     $('#contentType2').append(`<li>Electronics Selected</li>`);
+//     // type = "electronics"; 
+//     console.log(text);  
+//     break;
+// case 4:
+//     text = "#toysDown";
+//     $('#contentType2').append(`<li>Electronics Selected</li>`);
+//     // type = "toys";  
+//     console.log(text);   
+//     break;
+    
+// default:
+//     text = "No value found new";
+//     console.log(`Not Working!!!`);
+//     }  //End of Case
+//     // console.log(type);
+
+//     }); //End of Click
+    
+
+//   }); //End of Each
+
+//  //Use toggle method.. -> https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_eff_toggle
+//     // console.log(type);
+//     // // Show the list of Clothing
+//     // for( let i = 0; i < shop[0].items.type.length; i++ ) {
+//     //     $('#contentType2').append(`<li>${shop[0].items.type[i]} </li>`);
+//     //     // console.log(shop[0].items.clothing[i]);
+
+//     //  } 
 
 
 // Remove the items from the list using the removal icon
