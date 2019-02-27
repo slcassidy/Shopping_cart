@@ -23,6 +23,7 @@ const clearContent = function(){
     $('.contentType').empty('');
     $('.contentType2').empty('');
     $('#category').empty(``);
+    $(`.ul`).empty('');
     $(`.li`).empty('');
   };
 
@@ -81,35 +82,7 @@ const clearContent = function(){
 
 
 
-//   Selecting Clothing directly
 
-//   $( "#clothDown" ).on("click",function() {
-//       clearContent();
-//     // $( "#log" ).append( "<div>Handler for .mouseover() called.</div>" );
-//     // console.log("Clothing Mouse Over");
-//     $('#category').append(`<h3>Clothing</h3>`);
-//     // Show the list of Clothing
-//     for( let i = 0; i < shop[0].items.clothing.length; i++ ) {
-//         $('#contentType2').append(`<li>${shop[0].items.clothing[i]} </li>`);
-//         // console.log(shop[0].items.clothing[i]);
-
-//      } 
-
-//   }); //End Click on
-
-//    Show the list of Electronics
-
-//   $( "#electronicsDown" ).on("click",function() {
-//         clearContent();
-//     $('#category').append(`<h3>Electronics</h3>`);
-//         for( let i = 0; i < shop[0].items.electronics.length; i++ ) {
-//             $('#contentType2').append(`<li>${shop[0].items.electronics[i]} </li>`);
-//             console.log(shop[0].items.electronics[i]);
-
-//         } //End of the for loop for electronics
-
-  
-// }); //End Click on
 
 // Testing Calling a function
 
@@ -132,12 +105,13 @@ const selected = function(y,x) {
 
     $('#category').append(`<h3>${y}</h3>`);
     let result = ``;
-    for( let i = 0; i < shop[0].items.toys.length; i++ ) {
+    for( let i = 0; i < type.length; i++ ) {
 
 // original
         // $('#contentType2').append(`<li>${type[i]}</li>`);
 
-        result += `<p>${type[i]}</p>`;
+        result += `<li id=${[i]}>${type[i]}</li><br>`;
+        console.log(`This is the id ${[i]}`);
 
 
     } //End of the for loop for selected function
@@ -187,6 +161,18 @@ const selected = function(y,x) {
 
 
 // Based on the click option on the drop-box it provides all the attributes on the line with <li> tag
+// You an just use the tag and then put .on vs each
+
+$("li").on("click", function(event){
+    const selection = $(this).index();
+    console.log(selection);
+
+   const idName = $(this).attr("id");
+   console.log(`This is the Attribute of ID ${idName}`);
+   const aName = $(this).html();
+   console.log(aName);
+
+});
 
       $("li").each(function(i){
         $(this).on("click", {x:i}, function(event){
@@ -215,6 +201,40 @@ const selected = function(y,x) {
         
 
       }); //End of Each
+
+
+//*****************************Testing other processes*****************************************************   
+
+// Testing the process by bringing in the ID
+//   Selecting Clothing directly
+
+//   $( "#clothDown" ).on("click",function() {
+//       clearContent();
+//     // $( "#log" ).append( "<div>Handler for .mouseover() called.</div>" );
+//     // console.log("Clothing Mouse Over");
+//     $('#category').append(`<h3>Clothing</h3>`);
+//     // Show the list of Clothing
+//     for( let i = 0; i < shop[0].items.clothing.length; i++ ) {
+//         $('#contentType2').append(`<li>${shop[0].items.clothing[i]} </li>`);
+//         // console.log(shop[0].items.clothing[i]);
+
+//      } 
+
+//   }); //End Click on
+
+//    Show the list of Electronics
+
+//   $( "#electronicsDown" ).on("click",function() {
+//         clearContent();
+//     $('#category').append(`<h3>Electronics</h3>`);
+//         for( let i = 0; i < shop[0].items.electronics.length; i++ ) {
+//             $('#contentType2').append(`<li>${shop[0].items.electronics[i]} </li>`);
+//             console.log(shop[0].items.electronics[i]);
+
+//         } //End of the for loop for electronics
+
+  
+// }); //End Click on
 
     //   $('.dropdown-toggle').dropdown();
 
