@@ -123,28 +123,22 @@ const render = function(htmlStr){
 
 const selected = function(y,x) {
     clearContent();
-    // const header = $(this).html();
     console.log(y);
     console.log(x);
-    const type = 'shop[0].items.' + x;
+
+    const type = shop[0].items[x];
     console.log(`Type: ${type}`);
-    // const check = 'shop[0].items.' + x ;
-    // console.log(`check: ${check}`);
+
 
     $('#category').append(`<h3>${y}</h3>`);
     let result = ``;
     for( let i = 0; i < shop[0].items.toys.length; i++ ) {
-        // console.log(`Type2: ${type}`);
-        // console.log(`Type2: ${x}`);
-        // $('#contentType2').append(`<li>${shop[0].items.x[i]}</li>`);
+
 // original
-        // $('#contentType2').append(`<li>${shop[0].items.toys[i]}</li>`);
+        // $('#contentType2').append(`<li>${type[i]}</li>`);
 
-        // $('#option').append(shop[0].items.toys[i]);
         result += `<p>${type[i]}</p>`;
-        // result += `<p>${shop[0].items.toys[i]}</p>`;
 
-        // console.log(shop[0].items.x[i]);
 
     } //End of the for loop for selected function
     render(result);
