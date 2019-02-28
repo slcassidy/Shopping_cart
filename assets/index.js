@@ -15,6 +15,16 @@ const shop =[
   }
 ];    //End of shopping list
 
+const cart = [
+    {
+        clothing: [],
+        electronics: [],
+        movies: [],
+        tools: [],
+        toys: [] 
+    }
+];
+
 //Check structure of the list
 console.log('shop', shop);
 
@@ -27,147 +37,37 @@ const clearContent = function(){
     $(`.li`).empty('');
   };
 
-// When selecting the button to clear the list that is shown
-// const emptyList = function(){
-//     clearContent();
-//   };
-
-
 
 // $('.btn-secondary').on('click', emptyList);
 
 
-// Testing output
-// console.log(shop[0].items.tools[1]);
-// console.log(shop[0]);
-$('#test').append(`<li class= getTest>${shop[0].items.tools[0]}</li>`);
-const appendtable1 = function() {
-    const tblBody = $(`tbody`);
-     
-    const tblRow = $(`<tr>`);
-    const name = $(this).html();
-    console.log(name);
-    const detail = $(`<td>`).text("123Test123");
-    const detail1 = $(this).attr('getTest');
-    console.log(detail1);
-    const test = $(`<td>`).text(name);
-    console.log(detail);
-    const headerCat = $('#category').val();
-    console.log(headerCat);
-    const cat = $(`<td>`).text(headerCat);
-    // const cat = $(`<td>`)text(`Seesaw`);
-    console.log(cat);
-    const icon = $(`<td class="fas fa-minus-circle"></td>`);
-
-    // const lastestPrice = $(`<td>`).text(response.latestPrice);
-    
-    // tblRow.append(cat, detail, test);
-    tblRow.append(name).append(detail).append(icon);
-    // tblRow.append(cat, detail, test);
-// Append the table row to the tbody element
-
-    tblBody.append(tblRow);
-    //  $('#display').append(`<div class='proj task-color'>${$(this).attr('choose')}</div>`);
-
-    // if()
-     
-  };
 
 
-$('.getTest').on('click', appendtable1);
+//  $('body').on('click', ".fas", appendtable1);
+    // ${this}.remove
 
-// remove items
-const itemRemoval = function(){
-    const nameVal = $('#getTest').val();
+// remove items from the cart
+const itemRemoval = function(x){
+    const nameVal = $(this).val();
     console.log(nameVal);
-    const count = nameVal.indexOf();
-    console.log(count);
-    
-  // inside for loop
-    // for( let i = 0; i < employeeList.length; i++ ){
-    //   if(employeeList[i].name === nameVal){
-    //     console.log(i);
-    //     employeeList.splice(i,1);
-    //   }
-
-    // }
+    $(this).remove();
 };
 
-$('.fa-minus-circle').on('click', itemRemoval);
-
-const removeName = function() {
-    clearContent();
-    const nameVal = $('#name').val();
-    console.log(nameVal);
-  // inside for loop
-    for( let i = 0; i < employeeList.length; i++ ){
-      if(employeeList[i].name === nameVal){
-        console.log(i);
-        employeeList.splice(i,1);
-      }
-      // employeeList.splice(employeeList.indexOf(nameVal), 1);
-    }
-  
-    // $('#name').val('');
-    showEmployeeList();  
-  }
-  
-  
-  $('#deleteRecord').on('click', removeName);
-
-
-// *****Testing to pull over the variable****
-
-// Bring over the selected item
-
-// const verifyInfo= function() {
-//     clearContent();
-
-//     const nameVal = $('#option').val();
-  
-//     console.log(nameVal);
-  
-//     let result = "Not found";
-//     for (i=0; i < shop[0].items.tools[i].length; i++) {
-//       // Taking into account the case sensetive
-
-//       if (shop[0].items.tools[i] === nameVal) {
-//         result = "Tools"
-//         // category = "tools"
-//       }
-  
-      
-//     }
-    
-//     $('#cat').append(`<p> ${result} </p>`);
-//     $('#list').append(`<p> ${nameVal} </p>`);
-//     // $('.content').show();
-
-//     result ='';
-//     // $('#name').val(''); 
-    
-//   }
-  
-  
-//   $('#option').on('click', verifyInfo);
-// //   *****End Testing****
+// $("body").on('click', `.fa-minus-circle`, itemRemoval);
+$("body").on('click', '.remove', itemRemoval);
 
 
 
 
-
-
-
-// Testing Calling a function
+// Calling a function to render the information
 
 const render = function(htmlStr){
     $('#option').html(htmlStr);
-    // const Testing = $('#option').html(htmlStr);
-    // console.log(Testing);
+
   }
 
 
-
+// If a category from the drop-down is selected then display it on the screen on the left in a list
 const selected = function(y,x) {
     clearContent();
     console.log(y);
@@ -184,7 +84,7 @@ const selected = function(y,x) {
 // original
         // $('#contentType2').append(`<li>${type[i]}</li>`);
 
-        result += `<li class=choose id=${type[i]}>${type[i]}</li><br>`;
+        result += `<li class="choose"  category = "${y}" id=${type[i]}>${type[i]}</li><br>`;
 
 
         // result += `<li id=${[i]}>${type[i]}</li><br>`;
@@ -206,113 +106,64 @@ $("a").on("click", function(event){
 
     const aName = $(this).html();
 
-    selected(aName, idName);     
+    selected(aName, idName);
+    // appendtable1(aName);   
+
 
 
     }); //End of Click
-    
 
+// Sort the category
+$("#az").on("click", '.sort', function()
+{
+  $("#sort").tablesorter({
+    // sortList: [[0,0]],
+    // headers: {3:{sorter:false}}
+    $("th").sorted.ascending
+  });
 
-    //   $("#option").on("click", list);
-    //   //   $( "#clothDown" ).on("click",function() {
-
-    //   const list = function(){
-    //     console.log(`Clicked on listed item ${list}`);
-    //     const listName = $(this).html;
-    //     console.log(`Here is the list item ${listName}`);
-    //   };
-
-
-// check process
-
-//    Show the list of Electronics
-
-//   $('li').attr("id").on("click",function() {
-//         // clearContent();
-//         const start = $('li').attr("id").val();
-//         console.log(start);
-//         const cat = $('#category').val();
-//         console.log(cat);
-//         const detail = $('#0').html(htmlStr);
-//         console.log(detail);
-        
-//         const tblBody = $(`tbody`);
-     
-//         const tblRow = $(`<tr>`);
-        
-//    tblRow.append(cat, detail, "TEST");
-//    // Append the table row to the tbody element
-//    tblBody.append(tblRow);
-
-// Testing the process
-//   $('#echo').on("click",function() {
-//         // clearContent();
-//         const start = $('li').attr("id").val();
-//         console.log(start);
-//         const cat = $('#category').val();
-//         console.log(cat);
-//         const detail = $('#0').html(htmlStr);
-//         console.log(detail);
-        
-//         const tblBody = $(`tbody`);
-     
-//         const tblRow = $(`<tr>`);
-        
-//    tblRow.append(cat, detail, "TEST");
-//    // Append the table row to the tbody element
-//    tblBody.append(tblRow);
-
+  $('thead th.sort').data('sortBy', function(th, td, tablesort) {
   
-// }); //End Click on
+});
+}
+); 
 
-const appendtable = function() {
-    const tblBody = $(`tbody`);
-     
-    const tblRow = $(`<tr>`);
 
-    const detail = $(this).attr('choose');
-    const test = $(`test`);
-    console.log(detail);
     
-    tblRow.append(cat, detail, test);
-// Append the table row to the tbody element
 
-    tblBody.append(tblRow);
-     $('#display').append(`<div class='proj task-color'>${$(this).attr('choose')}</div>`);
-     
-  }
-
-
-$('.choose').on('click', appendtable);
 
 // Based on the click option on the drop-box it provides all the attributes on the line with <li> tag
-// You an just use the tag and then put .on vs each
 
-$("li").on("click", function(event){
-//     const selection = $(this).index();
-//     console.log(selection);
+$("body").on("click", '.choose', function(event){
+    const selection = $(this).index();
+    console.log(selection);
 
-//    const idName = $(this).attr('choose');
+
+
+   const cat = $(this).attr("category");
+   console.log(cat);
+
+   const title = $(`<td id="sort">`).text(cat);
+
+   const aName = $(this).html();
+   console.log(`This is the .html(): ${aName}`);
+
    
-//    const detail = $(this).attr('getTest');
-//    console.log(`This is the Attribute of ID ${idName}`);
-//    const aName = $(this).html();
-//    console.log(aName);
-
-//    const cat = $('#category').val();
-//    console.log(cat);
+   const detail = $(`<td>`).text(aName);
+   console.log(`Tags on front ${detail}`);
    
-//    const tblBody = $(`tbody`);
+   const tblBody = $(`tbody`);
 
-//    const tblRow = $(`<tr>`);
- 
-//     const label = $(`<td>`).text($("li").index.htmlStr);
-//     console.log(label);
+   const tblRow = $(`<tr class="remove">`);
  
 
-//    tblRow.append(cat, label, "TEST");
-   // Append the table row to the tbody element
-//    tblBody.append(tblRow);
+    const icon = $(`<td class="fas fa-minus-circle"></td>`);
+
+   tblRow.append(title, detail, icon);
+//    Append the table row to the tbody element
+   tblBody.append(tblRow);
+
+//    if ($(this).val !=) 
 
 //    switch (idName) {
 //     case 0:

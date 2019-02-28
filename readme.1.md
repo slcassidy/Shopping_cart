@@ -25,7 +25,12 @@ The shopping cart has some additional functionality as well. First, the user wil
 
 For this assignment you will be building a simple shopping cart application. Upon visiting the website, the user will be presented with a list of items on the left as well as a shopping cart on the right. When the user selects an item from the left, it will be added to the shopping cart. If a user attempts to add an item that already exists in their shopping cart, a message will be displayed alerting them that that item has already been added. The user will also be able to filter the list of all items by category.
 
+<!-- Add to shopping cart - DONE! -->
+ <!-- Do not add the same item to the cart - -->
+ <!-- Filter list by category -->
+
 Additionally, the user will be able to click items to remove it from their shopping cart. After an item has been removed from their shopping cart, they are then able to add it again from the list of all items.
+<!-- Click on items to remove from cart - DONE! -->
 
 ##### Design Notes
 
