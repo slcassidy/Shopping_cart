@@ -120,11 +120,11 @@ $("#search").on("keyup", function() {
 // Based on the click option on the drop-box it provides all the attributes on the line with <li> tag
 
 $("body").on("click", '.choose', function(event){
-    const selection = $(this).index();
-    console.log(selection);
+    // const selection = $(this).index();
+    // console.log(selection);
 
 
-    const tdVal = $("td").val();
+    const tdVal = $("#exist").val();
     console.log(`this is the detail of the file by TD ${tdVal}`)
     const existVal = $("#exist").html();
     console.log(`this is the detail of the file by ID ${existVal}`);
@@ -138,7 +138,7 @@ $("body").on("click", '.choose', function(event){
     const title = $(`<td id="sort">`).text(cat);
 
     const aName = $(this).html();
-    // console.log(`This is the .html(): ${aName}`);
+    console.log(`This is the .html(): ${aName}`);
 
     
     const detail = $(`<td id="exist">`).text(aName);
@@ -151,9 +151,10 @@ $("body").on("click", '.choose', function(event){
 
         const icon = $(`<td class="fas fa-minus-circle"></td>`);
     
-    // Alert if there is the same item    
+    // Alert if there is the same item **Can't seem to get this to work**   
+    
 
-    if(existVal === val){
+    if(tdVal === val){
         alert("This item has already been selected, please choose another item");
     }else{
     tblRow.append(title, detail, icon);
