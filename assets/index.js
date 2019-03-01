@@ -117,18 +117,26 @@ $("a").on("click", function(event){
 $("#az").on("click", '.sort', function()
 {
   $("#sort").tablesorter({
-    // sortList: [[0,0]],
-    // headers: {3:{sorter:false}}
-    $("th").sorted.ascending
+    sortList: [[0,0]],
+    headers: {3:{sorter:false}}
+    // $("th").sorted.ascending
   });
 
-  $('thead th.sort').data('sortBy', function(th, td, tablesort) {
+//   $('thead th.sort').data('sortBy', function(th, td, tablesort) {
   
 });
-}
-); 
+// }
+// ); 
+
+// const find = function(){
 
 
+// };
+
+// $("body").on("click", '.choose', function(event){
+ 
+
+// }
     
 
 
@@ -138,6 +146,11 @@ $("body").on("click", '.choose', function(event){
     const selection = $(this).index();
     console.log(selection);
 
+    // Alert if there is the same item
+
+    // if($("tr") != (this).val();
+    // if $("exist").val("click", '.choose', function(event){
+    // }
 
 
    const cat = $(this).attr("category");
@@ -149,7 +162,7 @@ $("body").on("click", '.choose', function(event){
    console.log(`This is the .html(): ${aName}`);
 
    
-   const detail = $(`<td>`).text(aName);
+   const detail = $(`<td id="exist">`).text(aName);
    console.log(`Tags on front ${detail}`);
    
    const tblBody = $(`tbody`);
@@ -192,6 +205,9 @@ $("body").on("click", '.choose', function(event){
 //         break;
 
 });
+
+const before = $("td").val();
+console.log(before);
 
 //*****************************Testing other processes*****************************************************   
 
